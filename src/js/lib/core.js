@@ -32,6 +32,13 @@ $.prototype.init = function (selector) {
     if (!selector) {
         return this;    // this в даному случае пустой обьект {}
     }
+
+    if (selector.tagName) {     // если есть tagName, значит это Html элемент, напр. <button class="active">Click me!</button>
+        this[0] = selector;     // оставляем только селектор (кнопка, див)
+        this.length = 1;
+        return this;            // return, чтобы код дальше не выполнялся 
+    }
+
     Object.assign(this, document.querySelectorAll(selector));     // позволяет в существующий обьект добавить новые свойства
     this.length = document.querySelectorAll(selector).length;      // добавили новое свойство 
     return this; // в этом обьекте  thisбудут хранится прототипы, того что назначим и элементы с которым будем взаимодействовать через querySelectorAll
