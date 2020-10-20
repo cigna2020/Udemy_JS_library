@@ -1,32 +1,28 @@
 import $ from '../core';
 
-$.prototype.on = function (eventName, callback) {   //eventName - событие ('click, submit) callback - функция, которая будет выполнятся
-    if (!eventName || !callback) {
-        return this;                                    // на случай, если аргумент не передали
-    }
+$.prototype.html = function (content) {
     for (let i = 0; i < this.length; i++) {
-        this[i].addEventListener(eventName, callback);
-    }
-    return this;
-};
-
-$.prototype.off = function (eventName, callback) {   //eventName - событие ('click, submit) callback - функция, которая будет выполнятся
-    if (!eventName || !callback) {
-        return this;                                    // на случай, если аргумент не передали
-    }
-    for (let i = 0; i < this.length; i++) {
-        this[i].removeEventListener(eventName, callback);
-    }
-    return this;
-};
-
-$.prototype.click = function (handler) {   //добавляем клик, как отдельный метод.  handler - обработчик клика
-    for (let i = 0; i < this.length; i++) {
-        if (handler) {
-            this[i].addEventListener('click', handler);
+        if (content) {
+            this[i].innerHTML = content;
         } else {
-            this[i].click();
+            return this[i].innerHTML;     // возвращаем содержимое элемента, дальше код не выполняется
         }
     }
-    return this;
+
+    return this;  // this - элемент с новым контентом
+};
+
+
+$.prototype.eq = function (i) {                 // будем получать элемент под номером і
+    const swap = this[i];
+    const objLength = Object.keys(this).length;     // узнайом количество свойств в обьекте
+
+    for (let i = 0; i < objLength; i++) {
+        delete this[i];                         // очищаем обьект
+    }
+
+    this[0] = swap;     // формируем новый обьект
+    this.length = 1;
+
+    return this;  // this - обьект с одним элементом с одним свойством
 };

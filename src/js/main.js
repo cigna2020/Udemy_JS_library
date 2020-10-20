@@ -13,7 +13,14 @@ import $ from './lib/lib';
 //     console.log('Hello');
 // }
 
+// $('button').on('click', function () {
+//     $(this).toggleClass('active');  //  this - тот элемент на который нажали,т.е кнопка
+//     // console.log(this);
+// });
+
+// console.log($('button').html()); // получим текст с кнопки
+// console.log($('button').html("hello button")); // поменяем текст кнопки
+
 $('button').on('click', function () {
-    $(this).toggleClass('active');  //  this - тот элемент на который нажали,т.е кнопка
-    // console.log(this);
+    $('div').eq(2).toggleClass('active');       // второму (3-му) диву тоглим класс при клике на кнопку
 });
