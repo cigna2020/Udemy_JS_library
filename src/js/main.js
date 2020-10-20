@@ -24,3 +24,7 @@ import $ from './lib/lib';
 $('button').on('click', function () {
     $('div').eq(2).toggleClass('active');       // второму (3-му) диву тоглим класс при клике на кнопку
 });
+
+$('div').click(function () {
+    console.log($(this).index());
+});
