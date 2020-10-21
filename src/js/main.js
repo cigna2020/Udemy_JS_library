@@ -21,13 +21,13 @@ import $ from './lib/lib';
 // console.log($('button').html()); // получим текст с кнопки
 // console.log($('button').html("hello button")); // поменяем текст кнопки
 
-$('button').on('click', function () {
-    $('div').eq(2).toggleClass('active');       // второму (3-му) диву тоглим класс при клике на кнопку
-});
+// $('button').on('click', function () {
+//     $('div').eq(2).toggleClass('active');       // второму (3-му) диву тоглим класс при клике на кнопку
+// });
 
-$('div').click(function () {
-    console.log($(this).index());
-});
+// $('div').click(function () {
+//     console.log($(this).index());
+// });
 
 // console.log($('div').eq(2).find('.more'));      // ищем элементы с классом more среди 2 (третего) div
 
@@ -35,5 +35,17 @@ $('div').click(function () {
 
 // console.log($('.more').eq(0).siblings());           // ищем всех соседей .more
 
-console.log($('button').fadeOut(1800));            // скрываем (делаем прозрачными) элементы в течении 18 сек. 
+// console.log($('button').fadeOut(1800));            // скрываем (делаем прозрачными) элементы в течении 18 сек. 
 // console.log($('button').fadeIn(1800));            // показываем элементы в течении 18 сек.
+
+$('#first').on('click', () => {
+    $('div').eq(1).fadeOut(800);
+});
+
+$('[data-count="second"]').on('click', () => {
+    $('div').eq(2).fadeOut(800);
+});
+
+$('button').eq(2).on('click', () => {
+    $('.w-500').fadeOut(800);
+});
