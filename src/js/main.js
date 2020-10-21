@@ -33,4 +33,7 @@ $('div').click(function () {
 
 // console.log($('.some').closest('.findme'));         // ищем все .some в родителе .findme
 
-console.log($('.more').eq(0).siblings());           // ищем всех соседей .more
+// console.log($('.more').eq(0).siblings());           // ищем всех соседей .more
+
+console.log($('button').fadeOut(1800));            // скрываем (делаем прозрачными) элементы в течении 18 сек. 
+// console.log($('button').fadeIn(1800));            // показываем элементы в течении 18 сек.
