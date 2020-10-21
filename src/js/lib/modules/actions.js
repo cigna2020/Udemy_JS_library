@@ -71,3 +71,48 @@ $.prototype.find = function (selector) {    // получаем обьекты �
     return this;
 };
 
+$.prototype.closest = function (selector) {     // метод, который будет искать ближайший элемент к селектору
+    let counter = 0; // число элементов найденных при помощи метода  closest
+
+    for (let i = 0; i < this.length; i++) {
+        this[i] = this[i].closest(selector);
+        counter++;
+    }
+
+    const objLength = Object.keys(this).length;
+    for (; counter < objLength; counter++) {
+        delete this[counter];     // удаляем обьекты, которые остались от старого обьекта, т.е, которые не перезаписаны
+    }
+    return this;
+
+};
+
+$.prototype.siblings = function () {    // получаем соседние элементы 
+    let numberOfItems = 0;                  // количество элементов, которые подошли по селектору
+    let counter = 0;        // количество новых элементов записанных в this
+
+    const copyObj = Object.assign({}, this);     // делаем неглубокую копию обьекта, чтобы избежать багов
+
+    for (let i = 0; i < copyObj.length; i++) {
+        const arr = copyObj[i].parentNode.children;
+
+        for (let j = 0; j < arr.length; j++) {
+            if (copyObj[i] === arr[j])          // пропускаем элемент на котором произошло действие (элемент, которого ищем соседей)
+                continue
+
+            this[counter] = arr[j];             // переписываем обьект новыми данными
+            counter++;
+        }
+
+        numberOfItems += arr.length - 1;     // -1, так как мы убрали один элемент (стр.100)
+    }
+
+    this.length = numberOfItems;
+
+    const objLength = Object.keys(this).length;
+    for (; numberOfItems < objLength; numberOfItems++) {
+        delete this[numberOfItems];     // удаляем обьекты, которые остались от старого обьекта, т.е, которые не перезаписаны
+    }
+
+    return this;
+};

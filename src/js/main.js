@@ -29,4 +29,8 @@ $('div').click(function () {
     console.log($(this).index());
 });
 
-console.log($('div').eq(2).find('.more'));
+// console.log($('div').eq(2).find('.more'));      // ищем элементы с классом more среди 2 (третего) div
+
+// console.log($('.some').closest('.findme'));         // ищем все .some в родителе .findme
+
+console.log($('.more').eq(0).siblings());           // ищем всех соседей .more
