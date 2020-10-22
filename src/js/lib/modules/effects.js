@@ -56,3 +56,30 @@ $.prototype.fadeOut = function (dur, fin) {
 
     return this;
 };
+
+$.prototype.fadeToggle = function (dur, display, fin) {
+    for (let i = 0; i < this.length; i++) {
+        if (window.getComputedStyle(this[i]).display === 'none') { // Computed - стили, которые применились, не только инлайн стили
+            this[i].style.display = display || 'block';     // если display не передан, тогда block. Это старый способ записи значения по умолчанию
+
+            const _fadeIn = (complection) => {
+                this[i].style.opacity = complection;
+            };
+
+            const ani = this.animateOverTime(dur, _fadeIn, fin);
+            requestAnimationFrame(ani);
+        } else {
+            const _fadeOut = (complection) => {
+                this[i].style.opacity = 1 - complection;
+                if (complection === 1) {
+                    this[i].style.display = 'none';     // если display не передан, тогда block. Это старый способ записи значения по умолчанию
+                }
+            };
+
+            const ani = this.animateOverTime(dur, _fadeOut, fin);
+            requestAnimationFrame(ani);
+        }
+    }
+
+    return this;
+};
