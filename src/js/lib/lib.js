@@ -5,6 +5,7 @@ import './modules/handlers';
 import './modules/actions';
 import './modules/effects';
 import './components/dropdown';
+import './components/modal';
 
 
 export default $; // таким образом разширяем функционал $, добавляя методы с display...
