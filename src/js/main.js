@@ -61,3 +61,36 @@ import $ from './lib/lib';
 //     </div>`
 // );
 // $('.dropdown-toggle').dropdown();
+
+$('#trigger').click(() => $('#trigger').createModal({       // метод createModal (динамическое мод.окно) вызывается только после клика на кнопку с id trigger
+    text: {
+        title: 'Modal title #3',
+        body: 'Lorem Lorem lya lya lya'
+    },
+    btns: {
+        count: 3,
+        settings: [
+            [
+                'Close',                    //  добавляем кнопку закрытие окна
+                ['btn-danger', 'mr-10'],    // классы для оформления кнопки
+                true                        // значит к кнопке добавится атрибут 'data-close'
+            ],
+            [
+                'Save changes',
+                ['btn-success'],
+                false,                       // значит, что она не закрывает окно
+                () => {
+                    alert('Данные сохранены');
+                }
+            ],
+            [
+                'Another button',
+                ['btn-warning', 'ml-10'],
+                false,
+                () => {
+                    alert('Hello world');
+                }
+            ]
+        ]
+    }
+})); 
