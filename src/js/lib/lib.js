@@ -9,6 +9,7 @@ import './components/modal';
 import './components/tab';
 import './components/accordion';
 import './components/carousel';
+import './services/requestes';
 
 
 export default $; // таким образом разширяем функционал $, добавляя методы с display...

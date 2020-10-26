@@ -93,4 +93,7 @@ $('#trigger').click(() => $('#trigger').createModal({       // метод create
             ]
         ]
     }
-})); 
+}));
+
+$().get('https://jsonplaceholder.typicode.com/todos/1')
+    .then(res => console.log(res));
